@@ -2,16 +2,16 @@
 
 namespace app\models\query;
 
-use yii\db\ActiveQuery;
+use app\models\ItemTag;
 
 /**
- * @see Tag
+ * @see ItemTag
  */
-class TagQuery extends ActiveQuery
+class ItemTagQuery extends \yii\db\ActiveQuery
 {
     /**
      * {@inheritdoc}
-     * @return Tag[]|array
+     * @return ItemTag[]|array
      */
     public function all($db = null)
     {
@@ -20,7 +20,7 @@ class TagQuery extends ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return Tag|array|null
+     * @return ItemTag|array|null
      */
     public function one($db = null)
     {

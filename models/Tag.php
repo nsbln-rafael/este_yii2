@@ -50,4 +50,15 @@ class Tag extends ActiveRecord
     {
         return new TagQuery(get_called_class());
     }
+
+    public function getTagItems()
+    {
+        return $this->hasMany(ItemTag::class, ['tag_id' => 'id']);
+    }
+
+    public function getItems()
+    {
+        return $this->hasMany(Item::class, ['id' => 'item_id'])
+            ->via('tagItems');
+    }
 }

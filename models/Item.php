@@ -10,6 +10,9 @@ use yii\db\ActiveRecord;
  * @property int    $id
  * @property string $name
  * @property int    $show_count
+ *
+ * @property ItemTag[] $itemTags
+ * @property Tag[]     $tags
  */
 class Item extends ActiveRecord
 {
@@ -53,5 +56,16 @@ class Item extends ActiveRecord
     public static function find()
     {
         return new ItemQuery(get_called_class());
+    }
+
+    public function getItemTags()
+    {
+        return $this->hasMany(ItemTag::class, ['item_id' => 'id']);
+    }
+
+    public function getTags()
+    {
+        return $this->hasMany(Tag::class, ['id' => 'tag_id'])
+            ->via('itemTags');
     }
 }

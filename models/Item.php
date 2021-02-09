@@ -68,4 +68,10 @@ class Item extends ActiveRecord
         return $this->hasMany(Tag::class, ['id' => 'tag_id'])
             ->via('itemTags');
     }
+
+    public function updateShowCount()
+    {
+        $this->show_count++;
+        $this->save();
+    }
 }
